@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rejected Timesheets</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-list >
+
+ <!-- <ion-list-header *ngIf ="loadItem().length > 0">-->
+  <ion-list-header *ngIf ="loadRejectedItem().length === 0">
+    <h2>
+      <div > No Rejected Timesheets</div>
+    </h2>
+   </ion-list-header> 
+   <ion-list-header *ngIf ="loadRejectedItem().length > 0">
+ 
+  <ion-label>
+    <h2>
+      <div style="background-color:#2f6b8c;padding-top:5px;padding-bottom:10px;padding-left:1px;color:white">TimeSheet</div>
+    </h2>  
+  </ion-label>
+  
+  <ion-label>
+    <h2>
+      <div style="background-color:#2f6b8c;padding-top:5px;padding-bottom:10px;padding-left:1px;color:white">Status</div>
+    </h2>  
+  </ion-label>
+
+  <ion-label>
+    <h2>
+      <div style="background-color:#2f6b8c;padding-top:5px;padding-bottom:10px;padding-left:1px;color:white">First Name </div>
+    </h2>  
+  </ion-label>
+  <ion-label>
+    <h2>
+      <div style="background-color:#2f6b8c;padding-top:5px;padding-bottom:10px;padding-left:5px;color:white">Last Name</div>
+    </h2>  
+  </ion-label>
+</ion-list-header>
+
+
+<ion-list>
+<ion-item-sliding *ngFor="let timesheet of loadRejectedItem(); let i = index">  
+      <ion-item>
+       <ion-label>{{timesheet.timeSheetId}}</ion-label>
+       <ion-label>{{timesheet.status}}</ion-label>
+       <ion-label>{{timesheet.FirstName}}</ion-label>
+       <ion-label>{{timesheet.LastName }}</ion-label>  
+       </ion-item>   
+
+      <ion-item-options>
+        <ion-button  color="success" (click)="UndoRejectItem(timesheet, i)" icon-start>
+        <ion-icon name="grid"></ion-icon>
+          Undo
+        </ion-button>
+          
+           
+  </ion-item-options> 
+</ion-item-sliding>  
+
+</ion-list>
+
+<!--
+<ion-fab vertical="top" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="addItem()" color = "primary" ><ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+-->
+
+
+<!--<ion-fab vertical = "center" horizontal="start" slot="float">
+  <button (click)="addItem()" color = "success" ion-fab mini><ion-icon name="add"></ion-icon></button>
+</ion-fab>-->       
+
